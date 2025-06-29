@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
       - name: Deploy PR preview
         uses: rossjrw/pr-preview-action@v1.4.3
         with:
