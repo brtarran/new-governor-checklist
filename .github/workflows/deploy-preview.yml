@@ -33,7 +33,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3 # Uploads the entire repository as a deployment artifact
         with:
           path: '.' # The path to the directory containing your deployable files (your index.html is at root)
+          name: pr-preview-pages-artifact # Giving the artifact a unique name
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 # Deploys the uploaded artifact to GitHub Pages
+        with:
+          artifact_name: pr-preview-pages-artifact # Specify the unique artifact name here
