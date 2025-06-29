@@ -1,0 +1,39 @@
+name: Deploy PR Preview to GitHub Pages
+
+on:
+  pull_request:
+    branches:
+      - main  # Trigger this workflow when a pull request is opened or updated targeting the 'main' branch
+
+# Sets permissions for the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the start and latest queued.
+# However, for pull requests, we want to run for each PR, so we don't set concurrency for the workflow.
+# Instead, the environment will handle concurrency if multiple deploys happen to the same environment.
+
+jobs:
+  # Single job to build and deploy the test version
+  deploy-preview:
+    environment:
+      name: github-pages/preview
+      url: ${{ steps.deployment.outputs.page_url }} # This will show the deployed URL in the workflow summary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Checks out your repository code
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5 # Configures GitHub Pages to deploy from a specific path
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3 # Uploads the entire repository as a deployment artifact
+        with:
+          path: '.' # The path to the directory containing your deployable files (your index.html is at root)
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # Deploys the uploaded artifact to GitHub Pages
