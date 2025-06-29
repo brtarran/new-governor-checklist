@@ -109,10 +109,10 @@
                              <h3 class="font-semibold mb-2">Your Key School Contacts:</h3>
                              <p class="text-sm text-gray-600">Fill these in after your initial meetings.</p>
                              <div class="mt-2 space-y-2 text-sm">
-                                <p><strong>Chair of Governors:</strong> <span class="font-mono bg-gray-100 px-2 py-1 rounded">_________________</span></p>
-                                <p><strong>Headteacher:</strong> <span class="font-mono bg-gray-100 px-2 py-1 rounded">_________________</span></p>
-                                <p><strong>Designated Safeguarding Lead (DSL):</strong> <span class="font-mono bg-gray-100 px-2 py-1 rounded">_________________</span></p>
-                                <p><strong>SENCO:</strong> <span class="font-mono bg-gray-100 px-2 py-1 rounded">_________________</span></p>
+                                <p><strong>Chair of Governors:</strong> <input type="text" id="contactChair" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
+                                <p><strong>Headteacher:</strong> <input type="text" id="contactHeadteacher" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
+                                <p><strong>Designated Safeguarding Lead (DSL):</strong> <input type="text" id="contactDSL" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
+                                <p><strong>SENCO:</strong> <input type="text" id="contactSENCO" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
                              </div>
                         </div>
                     </div>
@@ -240,7 +240,12 @@
                 ]
             }
         };
-
+        const contactData = {
+          contactChair: "",
+          contactHeadteacher: "",
+          contactDSL: "",
+          contactSENCO: ""
+        };
         let currentTab = 'phase1';
         let charts = {};
 
@@ -249,16 +254,22 @@
 
         function saveData() {
             localStorage.setItem('governorChecklistData', JSON.stringify(checklistData));
+            localStorage.setItem('governorContactData', JSON.stringify(contactData));
         }
 
         function loadData() {
-            const savedData = localStorage.getItem('governorChecklistData');
-            if (savedData) {
-                const parsedData = JSON.parse(savedData);
-                Object.assign(checklistData, parsedData);
-            }
-        }
+          const savedChecklistData = localStorage.getItem('governorChecklistData');
+            if (savedChecklistData) {
+              const parsedData = JSON.parse(savedChecklistData);
+              Object.assign(checklistData, parsedData);
+          }
 
+          const savedContactData = localStorage.getItem('governorContactData');
+            if (savedContactData) {
+              const parsedContactData = JSON.parse(savedContactData);
+              Object.assign(contactData, parsedContactData);   
+          }
+        }
         function renderChecklist(phase) {
             const phaseData = checklistData[phase];
             let content = `<div class="mb-6"><h2 class="text-2xl font-bold">${phaseData.title}</h2><p class="mt-1 text-gray-600">${phaseData.description}</p></div>`;
@@ -383,7 +394,16 @@
                 updateProgress();
             }
         });
-
+        function initContactInputs() {
+          const contactInputs = document.querySelectorAll('#contactChair, #contactHeadteacher, #contactDSL, #contactSENCO');
+          contactInputs.forEach(input => {
+            input.value = contactData[input.id] || '';
+            input.addEventListener('input', (e) => {
+                contactData[e.target.id] = e.target.value;
+                saveData();
+            });
+          });
+        }    
         function init() {
             loadData();
             renderChecklist(currentTab);
@@ -391,6 +411,7 @@
             createChart('phase2Chart', 0);
             createChart('phase3Chart', 0);
             updateProgress();
+            initContactInputs();
             document.querySelector('.tab-btn[data-tab="phase1"]').classList.add('active-tab', 'text-gray-900');
         }
 
