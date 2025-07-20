@@ -55,7 +55,7 @@
         <header class="text-center mb-8">
             <img src="https://primarysite-prod.s3.amazonaws.com/theme/HarlowInspirationalLearningTrust/school-logo.png" alt="HILT Academies logo" class="mx-auto h-32 w-auto object-contain mb-4">
             <h1 class="text-4xl font-bold text-gray-800">HILT Governor Onboarding Journey</h1>
-            <p class="mt-2 text-lg text-gray-600">Your interactive guide to becoming an effective primary school governor.</p>
+            <p class="mt-2 text-lg text-gray-600">Your interactive guide to becoming an effective primary school governor, trustee or member.</p>
         </header>
 
         <main>
@@ -110,7 +110,9 @@
                              <h3 class="font-semibold mb-2">Your Key School Contacts:</h3>
                              <p class="text-sm text-gray-600">Fill these in after your initial meetings.</p>
                              <div class="mt-2 space-y-2 text-sm">
-                                <p><strong>Chair of Governors:</strong> <input type="text" id="contactChair" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
+                                <p><strong>Chair of Trust:</strong> <input type="text" id="contactCOT" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
+                                <p><strong>Chair of Governors:</strong> <input type="text" id="contactCOG" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
+                                <p><strong>Executive Head/CEO:</strong> <input type="text" id="contactCEO" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
                                 <p><strong>Headteacher:</strong> <input type="text" id="contactHeadteacher" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
                                 <p><strong>Designated Safeguarding Lead (DSL):</strong> <input type="text" id="contactDSL" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
                                 <p><strong>Special Educational Needs Coordinator (SENCO):</strong> <input type="text" id="contactSENCO" class="font-mono bg-gray-100 px-2 py-1 rounded w-full border border-gray-200 focus:outline-none focus:border-blue-300"></p>
@@ -127,122 +129,126 @@
         const checklistData = {
             phase1: {
                 title: "Phase 1: Foundation",
-                description: "This initial phase focuses on building your foundational knowledge of our schools and the core responsibilities of a governor. Complete these tasks over your initial 1-2 months to get connected and understand the strategic landscape.",
+                description: "This initial phase focuses on building your foundational knowledge of our Trust and schools, and the core responsibilities of a governor. Complete these tasks over your initial 1-2 months to get connected and understand the strategic landscape. You should be able to complete all tasks each week in 1-2 hours.",
                 weeks: [
                     { title: "Week 1: Getting Started", tasks: [
-                        { text: "Review the Welcome Pack from the Governing Board.", time: "30 mins", focus: "Initial understanding of key documents.", completed: false },
-                        { text: "Familiarise yourself with the school's official website.", time: "45 mins", focus: "Understanding the school's public face and basic information.", completed: false },
-                        { text: "Read the Governing Board's Code of Conduct and agree to adhere to it.", time: "15 mins", focus: "Understanding professional expectations.", completed: false }
+                        { text: "Review the new governor welcome pack.", focus: "Initial understanding of key documents.", completed: false },
+                        { text: "Familiarise yourself with the official websites of the Trust and its schools.", focus: "Understanding the public face of our schools and the information we publish.", completed: false },
+                        { text: "Read the Trust's Code of Conduct and agree to adhere to it.", focus: "Understanding professional expectations.", completed: false }
                     ]},
                     { title: "Week 2: First Connections", tasks: [
-                        { text: "Arrange an initial introductory meeting with the Chair of Governors.", time: "45 mins", focus: "Personal connection and setting expectations.", completed: false },
-                        { text: "Review the most recent Full Governing Board (FGB) meeting minutes.", time: "45 mins", focus: "Understanding meeting dynamics and current issues.", completed: false }
+                        { text: "Arrange an initial introductory meeting with the Chair of Trust and/or Chair of Governors.", focus: "Personal connection and setting expectations.", completed: false },
+                        { text: "Arrange an introductory meeting with the Executive Head/CEO and/or Headteacher.", focus: "Direct insight from school leadership.", completed: false },
+                        { text: "Review the most recent minutes of meetings of Trust members, trustees and governors.", focus: "Understanding meeting dynamics and current issues.", completed: false }
                     ]},
-                    { title: "Week 3: Understanding the School's Core", tasks: [
-                        { text: "Identify the school's Designated Safeguarding Lead (DSL) and SENCO.", time: "30 mins", focus: "Understanding key roles for vulnerable children.", completed: false },
-                        { text: "Read the school's Safeguarding Policy and SEND Policy.", time: "1 hour", focus: "Crucial statutory duties and school provision.", completed: false }
+                    { title: "Week 3: Understanding Safeguarding and SEND", tasks: [
+                        { text: "Identify the Designated Safeguarding Lead (DSL) and Special Educational Needs Coordinator (SENCO).", focus: "Understanding key roles for vulnerable children.", completed: false },
+                        { text: "Review safeguarding and SEND policies.", focus: "Crucial statutory duties and school provision.", completed: false },
+                        { text: "Arrange for an in-person visit to our schools with senior leaders.", focus: "Planning for governor monitoring.", completed: false }
                     ]},
                     { title: "Week 4: The Strategic Role", tasks: [
-                        { text: "Read key sections of the DfE Governance Handbook.", time: "1 hour", focus: "Understanding the strategic oversight role.", completed: false },
-                        { text: "Review the Governing Board's structure and Terms of Reference.", time: "30 mins", focus: "Understanding how decisions are made and delegated.", completed: false }
+                        { text: "Read key sections of the DfE Governance Handbook relating to governance and strategy.", focus: "Understanding the strategic oversight role.", completed: false },
+                        { text: "Review the Trust's governance structure, its scheme of delegation and terms of reference for key committees.", focus: "Understanding how decisions are made and delegated.", completed: false }
                     ]},
                     { title: "Week 5: Meeting the School", tasks: [
-                        { text: "Arrange an introductory meeting with the Headteacher.", time: "1 hour", focus: "Direct insight from the school leader.", completed: false },
-                        { text: "Take a self-guided tour of the school.", time: "30 mins", focus: "Physical understanding of the learning environment.", completed: false }
+                        { text: "Conduct your first in-person visit to our schools.", focus: "Physical understanding of the learning environment.", completed: false },
+                        { text: "Draft a monitoring visit note and share with school leaders.", focus: "Sharing observations and asking questions.", completed: false }
                     ]},
                     { title: "Week 6: Data and Performance", tasks: [
-                        { text: "Access and review the school's most recent Ofsted report.", time: "45 mins", focus: "Understanding external assessment of school performance.", completed: false },
-                        { text: "Review Key Stage 1 and 2 performance data.", time: "45 mins", focus: "Understanding academic outcomes.", completed: false }
+                        { text: "Access and review the schools' most recent Ofsted reports.", focus: "Understanding external assessment of school performance.", completed: false },
+                        { text: "Review Early Years and Key Stage 2 performance data.", focus: "Understanding academic progress and outcomes.", completed: false }
                     ]},
-                    { title: "Week 7: Financial Overview", tasks: [
-                        { text: "Review a simplified overview of the school's budget.", time: "1 hour", focus: "Basic financial understanding.", completed: false },
-                        { text: "Understand the process for appointing staff.", time: "30 mins", focus: "Governance role in staffing.", completed: false }
+                    { title: "Week 7: Financial Overview and Recruitment", tasks: [
+                        { text: "Review a simplified overview of the school's budget.", focus: "Basic financial understanding.", completed: false },
+                        { text: "Review the safer recruitment policy.", focus: "Improved understanding of safeguarding practices.", completed: false }
                     ]},
                     { title: "Week 8: Preparation for Meetings", tasks: [
-                        { text: "Familiarise yourself with the agenda for the upcoming FGB meeting.", time: "1 hour", focus: "Being prepared and engaged for formal meetings.", completed: false },
-                        { text: "Understand the protocol for governor questions during meetings.", time: "15 mins", focus: "Effective participation.", completed: false }
+                        { text: "Familiarise yourself with the agenda for an upcoming meeting.", focus: "Being prepared and engaged for formal meetings.", completed: false },
+                        { text: "Understand the protocol for governor questions during meetings.", focus: "Effective participation.", completed: false }
                     ]}
                 ]
             },
             phase2: {
                 title: "Phase 2: Deeper Engagement",
-                description: "Now that you have the basics, this phase is about deeper engagement. In months 3 and 4 you'll attend meetings, explore specific policy areas, and start thinking about your own professional development.",
+                description: "Now that you have the basics, this phase is about deeper engagement. In months 3 and 4 you'll attend meetings, explore specific policy areas, and start thinking about your own professional development. You should be able to complete all tasks each week in 1-2 hours.",
                 weeks: [
                     { title: "Week 9: Attending Your First FGB Meeting", tasks: [
-                        { text: "Attend your first Full Governing Board (FGB) meeting.", time: "2-3 hours", focus: "Practical experience of governance in action.", completed: false },
-                        { text: "Reflect on the meeting: What went well? What was challenging?", time: "30 mins", focus: "Learning from experience.", completed: false }
+                        { text: "Attend your first Full Governing Board (FGB) meeting.", focus: "Practical experience of governance in action.", completed: false },
+                        { text: "Reflect on the meeting: What went well? What was challenging?", focus: "Learning from experience.", completed: false }
                     ]},
                     { title: "Week 10: Curriculum and Learning", tasks: [
-                        { text: "Review the school's curriculum overview for a specific key stage.", time: "1 hour", focus: "Understanding what pupils are learning.", completed: false },
-                        { text: "Understand how the school monitors the quality of teaching and learning.", time: "30 mins", focus: "Oversight of educational standards.", completed: false }
+                        { text: "Review the school's curriculum overview for a specific key stage.", focus: "Understanding what pupils are learning.", completed: false },
+                        { text: "Understand how the school monitors the quality of teaching and learning.", focus: "Oversight of educational standards.", completed: false }
                     ]},
                      { title: "Week 11: Policies and Procedures", tasks: [
-                        { text: "Read the school's Attendance Policy and Behaviour Policy.", time: "1 hour", focus: "Understanding key aspects of pupil welfare and management.", completed: false },
-                        { text: "Understand the complaints procedure and the role of governors in it.", time: "30 mins", focus: "Governance role in resolving issues.", completed: false }
+                        { text: "Read the school's Attendance Policy and Behaviour Policy.", focus: "Understanding key aspects of pupil welfare and management.", completed: false },
+                        { text: "Understand the complaints procedure and the role of governors in it.",  focus: "Governance role in resolving issues.", completed: false }
                     ]},
                     { title: "Week 12: Link Governor Roles", tasks: [
-                        { text: "Research your assigned link governor role (if applicable).", time: "1 hour", focus: "Specialised contribution.", completed: false },
-                        { text: "Identify relevant governor training sessions (Local Authority or NGA).", time: "30 mins", focus: "Proactive professional development.", completed: false }
+                        { text: "Research your assigned link governor role (if applicable).", focus: "Specialised contribution.", completed: false },
+                        { text: "Identify relevant governor training sessions (Local Authority or NGA).", focus: "Proactive professional development.", completed: false }
                     ]},
                     { title: "Week 13: Safeguarding Deep Dive", tasks: [
-                        { text: "Understand the purpose of the Single Central Record (SCR).", time: "45 mins", focus: "Ensuring statutory compliance for staff suitability.", completed: false },
-                        { text: "Watch an NGA webinar on Safeguarding Responsibilities.", time: "45 mins", focus: "Deepening safeguarding knowledge.", completed: false }
+                        { text: "Understand the purpose of the Single Central Record (SCR).", focus: "Ensuring statutory compliance for staff suitability.", completed: false },
+                        { text: "Watch an NGA webinar on Safeguarding Responsibilities.", focus: "Deepening safeguarding knowledge.", completed: false }
                     ]},
                     { title: "Week 14: Pupil Premium and SEND", tasks: [
-                        { text: "Understand the school's use of Pupil Premium funding.", time: "1 hour", focus: "Ensuring equitable outcomes.", completed: false },
-                        { text: "Review the school's SEND provision.", time: "30 mins", focus: "Supporting all learners.", completed: false }
+                        { text: "Understand the school's use of Pupil Premium funding.",  focus: "Ensuring equitable outcomes.", completed: false },
+                        { text: "Review the school's SEND provision.", focus: "Supporting all learners.", completed: false }
                     ]},
                     { title: "Week 15: Strategic Planning", tasks: [
-                        { text: "Review the School Improvement Plan (SIP/SDP).", time: "1 hour", focus: "Understanding the school's strategic direction.", completed: false },
-                        { text: "Discuss with the Chair how governors monitor the SIP/SDP.", time: "30 mins", focus: "Governor oversight.", completed: false }
+                        { text: "Review the School Improvement Plan (SIP/SDP).", focus: "Understanding the school's strategic direction.", completed: false },
+                        { text: "Discuss with the Chair how governors monitor the SIP/SDP.", focus: "Governor oversight.", completed: false }
                     ]},
                     { title: "Week 16: Communication and Collaboration", tasks: [
-                        { text: "Understand the school's communication channels with parents.", time: "45 mins", focus: "Transparency and engagement.", completed: false },
-                        { text: "Consider shadowing an experienced governor during a school visit.", time: "45 mins", focus: "Learning from peers.", completed: false }
+                        { text: "Understand the school's communication channels with parents.", focus: "Transparency and engagement.", completed: false },
+                        { text: "Consider shadowing an experienced governor during a school visit.", focus: "Learning from peers.", completed: false }
                     ]}
                 ]
             },
             phase3: {
                 title: "Phase 3: Consolidating and Contributing",
-                description: "In this final onboarding phase, you will consolidate your knowledge. By the end of months 5 and 6 you will be an active, confident, and effective contributor to the governing board.",
+                description: "In this final onboarding phase, you will consolidate your knowledge. By the end of months 5 and 6 you will be an active, confident, and effective contributor to the governing board. You should be able to complete all tasks each week in 1-2 hours.",
                 weeks: [
                     { title: "Week 17: Attending a Committee Meeting", tasks: [
-                        { text: "Attend a committee meeting (e.g., Resources, Curriculum).", time: "1-2 hours", focus: "Understanding the detailed work of committees.", completed: false },
-                        { text: "Reflect on the committee meeting's contribution to the FGB.", time: "30 mins", focus: "Understanding interconnectedness.", completed: false }
+                        { text: "Attend a committee meeting (e.g., Resources, Curriculum).", focus: "Understanding the detailed work of committees.", completed: false },
+                        { text: "Reflect on the committee meeting's contribution to the FGB.", focus: "Understanding interconnectedness.", completed: false }
                     ]},
                     { title: "Week 18: Governor Training and Development", tasks: [
-                        { text: "Register for at least one governor training session.", time: "30 mins", focus: "Commitment to ongoing learning.", completed: false },
-                        { text: "Explore the NGA website for resources and articles.", time: "1 hour", focus: "Utilising external support and best practice.", completed: false }
+                        { text: "Register for at least one governor training session.", focus: "Commitment to ongoing learning.", completed: false },
+                        { text: "Explore the NGA website for resources and articles.", focus: "Utilising external support and best practice.", completed: false }
                     ]},
                     { title: "Week 19: Wellbeing and Staffing", tasks: [
-                        { text: "Understand the school's approach to staff wellbeing and workload.", time: "45 mins", focus: "Supporting the school's most valuable asset.", completed: false },
-                        { text: "Review the school's policy on performance management for staff.", time: "45 mins", focus: "Ensuring accountability and development.", completed: false }
+                        { text: "Understand the school's approach to staff wellbeing and workload.", focus: "Supporting the school's most valuable asset.", completed: false },
+                        { text: "Review the school's policy on performance management for staff.", focus: "Ensuring accountability and development.", completed: false }
                     ]},
                     { title: "Week 20: Engagement with Stakeholders", tasks: [
-                        { text: "Attend a school event (e.g., assembly, fete, sports day).", time: "1-2 hours", focus: "Connecting with the school community.", completed: false },
-                        { text: "Consider how the Governing Board engages with the wider community.", time: "30 mins", focus: "Community links.", completed: false }
+                        { text: "Attend a school event (e.g., assembly, fete, sports day).", focus: "Connecting with the school community.", completed: false },
+                        { text: "Consider how the Governing Board engages with the wider community.", focus: "Community links.", completed: false }
                     ]},
                     { title: "Week 21: Financial Health and Oversight", tasks: [
-                        { text: "Deepen understanding of the school's financial position.", time: "1 hour", focus: "Critical oversight responsibility.", completed: false },
-                        { text: "Understand the school's asset management and premises maintenance.", time: "30 mins", focus: "Ensuring a safe learning environment.", completed: false }
+                        { text: "Deepen understanding of the school's financial position.", focus: "Critical oversight responsibility.", completed: false },
+                        { text: "Understand the school's asset management and premises maintenance.", focus: "Ensuring a safe learning environment.", completed: false }
                     ]},
                     { title: "Week 22: Reflecting on Your Role", tasks: [
-                        { text: "Conduct a self-reflection on your journey as a new governor.", time: "1 hour", focus: "Personal growth and identifying future development needs.", completed: false },
-                        { text: "Discuss your reflections with your mentor or the Chair.", time: "30 mins", focus: "Seeking feedback and guidance.", completed: false }
+                        { text: "Conduct a self-reflection on your journey as a new governor.", focus: "Personal growth and identifying future development needs.", completed: false },
+                        { text: "Discuss your reflections with your mentor or the Chair.", focus: "Seeking feedback and guidance.", completed: false }
                     ]},
                     { title: "Week 23: Contributing to Strategy", tasks: [
-                        { text: "Begin to contribute more actively in meetings.", time: "During meetings", focus: "Moving from observer to active participant.", completed: false },
-                        { text: "Offer to take on a small task or follow-up action from a meeting.", time: "30 mins", focus: "Proactive engagement.", completed: false }
+                        { text: "Begin to contribute more actively in meetings.", focus: "Moving from observer to active participant.", completed: false },
+                        { text: "Offer to take on a small task or follow-up action from a meeting.", focus: "Proactive engagement.", completed: false }
                     ]},
                     { title: "Week 24: Long-Term Commitment", tasks: [
-                        { text: "Review your personal development plan for the next 6-12 months.", time: "1 hour", focus: "Sustained professional growth.", completed: false },
-                        { text: "Re-read the DfE Governance Handbook, noting how your understanding has deepened.", time: "30 mins", focus: "Consolidating knowledge and confirming commitment.", completed: false }
+                        { text: "Review your personal development plan for the next 6-12 months.", focus: "Sustained professional growth.", completed: false },
+                        { text: "Re-read the DfE Governance Handbook, noting how your understanding has deepened.", focus: "Consolidating knowledge and confirming commitment.", completed: false }
                     ]}
                 ]
             }
         };
         const contactData = {
-          contactChair: "",
+          contactCOT: "",
+          contactCOG: "",
+          contactCEO: "",
           contactHeadteacher: "",
           contactDSL: "",
           contactSENCO: ""
@@ -288,7 +294,6 @@
                                     <p class="font-medium text-gray-800">${task.text}</p>
                                     <div class="text-sm text-gray-500 mt-1 flex items-center space-x-4">
                                         <span><strong>Focus:</strong> ${task.focus}</span>
-                                        <span class="font-semibold">~${task.time}</span>
                                     </div>
                                 </div>
                             </label>
@@ -396,7 +401,7 @@
             }
         });
         function initContactInputs() {
-          const contactInputs = document.querySelectorAll('#contactChair, #contactHeadteacher, #contactDSL, #contactSENCO');
+          const contactInputs = document.querySelectorAll('#contactCOT, #contactCOG, #contactCEO, #contactHeadteacher, #contactDSL, #contactSENCO');
           contactInputs.forEach(input => {
             input.value = contactData[input.id] || '';
             input.addEventListener('input', (e) => {
